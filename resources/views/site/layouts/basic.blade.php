@@ -14,13 +14,13 @@
   </head>
 
   {{-- Comentarios --}}
-  <body class ="bg-dark">
+  <body class ="bg-dark d-flex flex-column min-vh-100">
   <!-- Navbar -->
-  @include('site.layouts._partials.menu')    
+  @include('site.layouts._partials.menu')
   <!-- Navbar -->
 
   {{-- Search --}}
-  @include('site.layouts._partials.search')    
+  @include('site.layouts._partials.search')
   {{-- Search --}}
 
   {{-- Conteudo --}}

@@ -1,8 +1,8 @@
-<footer class="text-center text-lg-start border-dark bg-transparent text-white">
+<footer class="text-center text-lg-start mt-auto border-dark bg-transparent text-white">
 
   <!-- Section: Links  -->
   <section class="">
-    <div class="container text-center text-md-start mt-5">
+    <div class="container text-center text-md-start mt-auto">
       <!-- Grid row -->
       <div class="row mt-3">
         <!-- Grid column -->
@@ -76,7 +76,7 @@
  <section class="d-flex container justify-content-center justify-content-lg-between p-4">
     <!-- Left -->
     <div class="me-5 d-none d-lg-block">
-      <span> @php echo 'me siga nas redes sociais'; @endphp </span>
+      <span> @php echo 'Me siga nas redes sociais'; @endphp </span>
     </div>
     <!-- Left -->
 

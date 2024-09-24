@@ -3,75 +3,69 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Anime;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AnimeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return view('site.anime');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
+//Funçao de busca de anime no banco de dados usando o where
+    protected function anime($where,$condicao,$valor){
+        $resultados = Anime::where($where,$condicao ,$valor)->get();
+        return $resultados;
+   }
+//Metodos do site Principal
     //Metodo para controlar as pesquisas
     public function search(){
-        return view('site.search');
-    }
-  
-    public function showAnime(string $nome_anime) 
-    { 
-        return view('site.anime', compact('nome_anime')); //metodo para redirecionar para o site com o anime certo
+        $resultados = $this->anime('nome','like','%'.$_GET['search'].'%');
+        return view('site.search', compact('resultados'));
     }
 
-    public function showSeason(string $nome_anime, int $season_id){
-        return view('site.season',compact('nome_anime','season_id')); //Metodo para redirecionar para o anime com a temporada certa
+    // Funçao que ira mostrar o Anime
+    public function showAnime(string $nome_anime) {
+        $anime = $this->anime('nome', '=', $nome_anime);
+        $temporadas = Anime::find($anime[0]['cod_anime'])->temporadas;
+        
+        //Verifica se o anime foi encontrado
+        if($anime->count() == 0){
+            return redirect()->route('site.naoEncontrado'); 
+        }
+         // Aumentar Visualização
+         $visualizacao = Anime::find($anime[0]['cod_anime']);
+         $visualizacao->visualizacoes = $visualizacao->visualizacoes + 1;
+         $visualizacao->save();
+
+         //Buscar se o usuario esta logado favorito exite
+         if(Auth::check()){
+            $favorito = User::find(Auth::user()->cod_user)->favoritos()->where('anime_cod_anime', '=', $anime[0]['cod_anime'])->first();
+            return view('site.anime', compact('anime', 'temporadas', 'favorito'));
+         }
+         
+        return view('site.anime', compact('anime', 'temporadas'));
     }
 
-    public function showEpisode(string $nome_anime, int $season_id, int $ep_id){
-        return view('site.ep', compact('nome_anime','season_id', 'ep_id')); // -> metodo compact onde usamos o metodo compact e passamos dentro dele os parametros das variaveis que queremos passar para a view atraves tambem de um array associativo
-    }
-    
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        return 'edit';
+    //Funçao para retornar os animes Populares
+    public function popular(){
+        $animes = Anime::orderBy('visualizacoes', 'desc')->limit(50)->get();
+        return view('site.popular', compact('animes'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+//Metodos do site administratico
+    //Funçao que ira retornar o site administrativo de animes
+    public function animes() {
+        $animes = Anime::all();
+        return view('site.admin.animes', compact('animes'));
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+    //Metodo para mostrar de adicionar novo anime
+    public function showNew(){
+        return view('site.admin.anime.novo');
+    }
+    //Metodo para mostrar a tela de editar anime
+    public function showEdit(int $cod_anime){
+        $anime = $this->anime('cod_anime', '=', $cod_anime);
+        return view('site.admin.anime.edit', compact('anime'));
+    }
+    public function delete(int $cod_anime){
+        return redirect()->route('site.admin.animes');
     }
 }
-// return view('site.anime', ['id' => $id]); ->Metodo do array associativo
-//return view('site.anime')->with('id', $id); // Usando o metodo with eu consigo passar o valor para a view associando o valor adicionado a view com o recebido como parametro pela função

@@ -14,27 +14,36 @@
               <h2 class="fw-bold mb-2 text-uppercase mb-3">Registrar-se</h2>
 
               <p class="text-white mb-5">Entre com suas informações!</p>
+
+              {{-- Erros de Registro --}}
+              @error('error')
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Erro</strong> {{$message}}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              @enderror
+
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
                   <form action="{{route('site.registrar')}}" method="post">
                   @csrf
                     <div data-mdb-input-init class="form-outline form-white mb-4">
-                      <input name="username" placeholder="Username" class="form-control form-control-lg" required/>
+                      <input name="name" placeholder="Username" class="form-control rounded-0 form-control-lg" required/>
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div data-mdb-input-init class="form-outline form-white mb-4">
-                      <input type="email" name="email" id="typeEmailX" placeholder="E-mail" class="form-control form-control-lg" required/>
+                      <input type="email" name="email" id="typeEmailX" placeholder="E-mail" class="form-control rounded-0 form-control-lg" required/>
                     </div>
                   </div>
 
                   <div data-mdb-input-init class="form-outline form-white mb-4">
-                    <input type="password" name= "senha" id="typePasswordX" placeholder="Senha" class="form-control form-control-lg" required/>
+                    <input type="password" name= "password" id="typePasswordX" placeholder="Senha" class="form-control rounded-0 form-control-lg" required/>
                   </div>
 
                   <div data-mdb-input-init class="form-outline form-white mb-4">
-                    <input type="password" name= "senhaNovamente" id="typePasswordX" placeholder="Repita a Senha" class="form-control form-control-lg" required/>
+                    <input type="password" name= "senhaNovamente" id="typePasswordX" placeholder="Repita a Senha" class="form-control rounded-0 form-control-lg" required/>
                   </div>
 
                   <div class="d-grid gap-2">

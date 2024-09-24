@@ -17,6 +17,15 @@
             <li class="nav-item">
               <a class="nav-link"  href="{{route('site.new')}}">Novidades</a>
             </li>
+
+            {{-- Codigo para aparecer o botao para entrar no admin --}}
+            @if (auth()->check() && auth()->user()->tipo_de_acesso == 1)
+            <li class="nav-item">
+              <a class="nav-link active"  href="{{route('site.admin.index')}}">Administrativo</a>
+            </li>
+            @endif
+            {{-- Fim da condiçao --}}
+
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item"> 
@@ -26,15 +35,15 @@
                 </svg>
               </a>
             </li>
-
-            <li class="nav-item">
-              <a type="button" class="btn btn-dark">
-                <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
-                  <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
-                </svg>
-              </a>
-            </li>
-
+            @if (auth()->check())
+              <li class="nav-item">
+                <a type="button" href="{{route('site.favoritos')}}" class="btn btn-dark">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                    <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+                  </svg>
+                </a>
+              </li>
+            @endif
             <li class="nav-item dropdown">
               <a type="button" class="btn btn-dark">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -45,27 +54,18 @@
               
               <ul class="dropdown-menu">
 
-              @php
-
-              $a = 1;
-              $b = 2;
-              
-
-              @endphp
               {{-- Condiçao para ver se o user esta logado caso esteja ele vai apresentar botoes diferentes no menu do usuario --}}
-              @if ( $a + $b == 2)
+              @if (auth()->check())
 
-                <li><a class="dropdown-item" href="#">Perfil</a></li>
-                <li><a class="dropdown-item" href="#">Configurações</a></li>
+                <li><a class="dropdown-item" href="{{route('site.user')}}">{{auth()->user()->name}}</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sair</a></li>
+                <li><a class="dropdown-item" href="{{route('site.logout')}}">Sair</a></li>
 
               @else
 
                 <li><a class="dropdown-item" href="{{route('site.login')}}">Entrar</a></li>
-              {{-- @isset($a) --}}
                 <li><a class="dropdown-item" href="{{route('site.registrar')}}">Registrar</a></li>
-                {{-- @endisset --}}
+                
               @endif
 
               </ul>
@@ -82,4 +82,4 @@
       function closeSearch() {
         document.getElementById("myOverlay").style.display = "none";
       }
-    </script>
+  </script>

@@ -7,10 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected  $primaryKey = 'cod_user';
+
+    public function favoritos(): HasMany
+    {
+        return $this->hasMany(Favorito::class);
+    }
 
     /**
      * The attributes that are mass assignable.
