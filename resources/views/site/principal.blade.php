@@ -4,7 +4,7 @@
 <div class="container pt-4">
 
 <!-- Carousel -->
-<div id="carousel" class="carousel slide">
+<div id="carousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
     <a href="{{route('site.anime', 'Kimetsu no Yaiba')}}" class="link-light link-offset-2 link-underline-opacity-0">

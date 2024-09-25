@@ -3,10 +3,13 @@
 /public/build
 /public/hot
 /public/storage
+/public/animes
 /storage/*.key
 /vendor
 .env
 .env.backup
+.mkv
+.mp4
 .env.production
 .phpunit.result.cache
 Homestead.json
