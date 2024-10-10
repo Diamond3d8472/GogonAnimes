@@ -75,13 +75,14 @@ Route::prefix('/app')->group(function(){
         Route::get('/{nome_anime}/{num_temporada}', [TemporadaController::class, 'showSeason'])->where('num_temporada', '[0-9]+')->name('site.season');
         Route::get('/{nome_anime}/{num_temporada}/{num_episodio}', [EpisodeController::class, 'showEpisode'])->where('num_temporada', '[0-9]+')->where('num_episodio', '[0-9]+')->name('site.episode');
 
-        //Comentar - Ainda tenho que testar
+        //Comentarios 
         Route::get('/{cod_episodio}/comentar', [ComentarioController::class, 'comentar'])->name('site.comentar');
+        Route::get('/{cod_episodio}/comentar/remover/{cod_comentario}', [ComentarioController::class, 'removerComentario'])->name('site.removercomentario');
     });
 
 
 
-    //Grupo de rotas para a area administrativa para cadastro de generos, animes, temporadas novas e episodios
+    //Grupo de rotas para a area administrativa
     Route::prefix('/admin')->group(function(){
 
         //Rota Principal da Dashboard de administraçao
@@ -129,8 +130,9 @@ Route::prefix('/app')->group(function(){
 
 
 });
-//Redireciona para a pagina inicial caso nao encontre a rota solicitada no browser
 
+
+//Redireciona para a pagina inicial caso nao encontre a rota solicitada no browser
 Route::fallback(function(){
     return redirect()->route('site.naoEncontrado');
 });

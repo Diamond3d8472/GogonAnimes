@@ -40,11 +40,11 @@
                                         @if(isset($episodios) && $episodios->count() > 0)
                                             @foreach ($episodios as $episodio)                                           
                                                 <tr>
-                                                    <td>{{$episodio['cod_episodio']}}</td>
-                                                    <td>{{$episodio['nome']}}</td>
-                                                    <td>{{$episodio['foto']}}</td>
-                                                    <td>{{$episodio['num_ep']}}</td>
-                                                    <td>{{$episodio['visualizacoes']}}</td>
+                                                    <td>{{$episodio->cod_episodio}}</td>
+                                                    <td>{{$episodio->nome}}</td>
+                                                    <td>{{$episodio->foto}}</td>
+                                                    <td>{{$episodio->num_ep}}</td>
+                                                    <td>{{$episodio->visualizacoes}}</td>
                                                     <td>
                                                         <a href="{{route('site.admin.episodios.edit', ['cod_anime' => $cod_anime, 'cod_temporada'=> $cod_temporada, 'cod_episodio'=>$episodio['cod_episodio']])}}" type="button" class="btn btn-success"><i class="fas fa-edit"></i></a>
                                                         <a href="{{route('site.admin.episodios.edit', ['cod_anime' => $cod_anime, 'cod_temporada'=> $cod_temporada, 'cod_episodio'=>$episodio['cod_episodio']])}}" type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>

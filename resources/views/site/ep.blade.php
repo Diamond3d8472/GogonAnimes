@@ -80,6 +80,14 @@
                                 <p class="small mb-0">
                                   {{$comentario['comentario']}}
                                 </p>
+
+                                {{-- Verifica se o comentario é seu para que voce possa remover --}}
+                                @if(auth()->check() && $comentario->usuario->cod_user == auth()->user()->cod_user)
+                                  <a href="{{route('site.removercomentario', ['cod_episodio'=>$episodio[0]->cod_episodio,'cod_comentario'=>$comentario->cod_comentario])}}" class="link-danger mb-0 link-offset-2 link-underline-opacity-0">
+                                    Remover
+                                  </a>
+                                @endif
+
                               </div>
                             </div>
                           </div>

@@ -17,7 +17,7 @@
 
             @if (isset($favorito) && $favorito->count() >= 1)
               <a href="{{route('site.removerfavorito', $anime[0]['cod_anime'])}}" class="btn btn-danger rounded-0 fw-bold" type="button">Remover dos Favoritos</a>
-            @elseif(isset($favorito))
+            @elseif(!isset($favorito) && auth()->check())
               <a href="{{route('site.salvarfavorito', $anime[0]['cod_anime'])}}" class="btn btn-info text-white rounded-0 fw-bold" type="button">Salvar nos Favoritos</a>
             @endif
 

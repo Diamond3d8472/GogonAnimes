@@ -4,6 +4,24 @@
 <div class="container pt-4">
     <div class="row">
         <h5 class="text-white">Favoritos - Gogon Animes <hr class="border border-light border-2 opacity-70"></h5>
+        {{-- Sucessos --}}
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Sucesso</strong> {{session()->get('success')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        {{-- Fim sucesso --}}
+
+        {{-- Erro --}}
+        @error('error')
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Erro</strong> {{$message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @enderror
+        {{-- Fim Erro --}}
+
         {{-- Verifica se achou algum resultado --}}
         @if(isset($favoritos) && $favoritos->count() > 0)
             @foreach ($favoritos as $favorito)

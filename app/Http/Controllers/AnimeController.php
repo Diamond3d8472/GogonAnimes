@@ -50,6 +50,9 @@ class AnimeController extends Controller
         return view('site.popular', compact('animes'));
     }
 
+
+
+
 //Metodos do site administratico
     //Funçao que ira retornar o site administrativo de animes
     public function animes() {

@@ -39,11 +39,11 @@
                                         @if(isset($animes) && $animes->count() > 0)
                                             @foreach ($animes as $anime)                                           
                                                 <tr>
-                                                    <td>{{$anime['cod_anime']}}</td>
-                                                    <td>{{$anime['nome']}}</td>
-                                                    <td>{{$anime['foto']}}</td>
-                                                    <td>{{$anime['banner']}}</td>
-                                                    <td>{{$anime['datatempo_criacao']}}</td>
+                                                    <td>{{$anime->cod_anime}}</td>
+                                                    <td>{{$anime->nome}}</td>
+                                                    <td>{{$anime->foto}}</td>
+                                                    <td>{{$anime->banner}}</td>
+                                                    <td>{{$anime->datatempo_criacao}}</td>
                                                     <td>
                                                         <a href="{{route('site.admin.animes.edit', $anime['cod_anime'])}}" type="button" class="btn btn-success"><i class="fas fa-edit"></i></a>
                                                         <a href="{{route('site.admin.animes.delete', $anime['cod_anime'])}}" type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>

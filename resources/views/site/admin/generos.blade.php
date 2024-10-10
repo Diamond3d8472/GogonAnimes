@@ -37,10 +37,10 @@
                                                 @if(isset($generos) && $generos->count() > 0)
                                                     @foreach ($generos as $genero)                                           
                                                         <tr>
-                                                            <td>{{$genero['cod_genero']}}</td>
-                                                            <td>{{$genero['nome']}}</td>
-                                                            <td>{{$genero['foto']}}</td>
-                                                            <td>{{$genero['datatempo_criacao']}}</td>
+                                                            <td>{{$genero->cod_genero}}</td>
+                                                            <td>{{$genero->nome}}</td>
+                                                            <td>{{$genero->foto}}</td>
+                                                            <td>{{$genero->datatempo_criacao}}</td>
                                                             <td>
                                                                 <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
                                                                 <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>

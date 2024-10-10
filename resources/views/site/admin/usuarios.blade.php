@@ -37,10 +37,10 @@
                                                 @if(isset($usuarios) && $usuarios->count() > 0)
                                                     @foreach ($usuarios as $usuario)                                           
                                                         <tr>
-                                                            <td>{{$usuario['cod_user']}}</td>
-                                                            <td>{{$usuario['username']}}</td>
-                                                            <td>{{$usuario['email']}}</td>
-                                                            <td>{{$usuario['created_at']}}</td>
+                                                            <td>{{$usuario->cod_user}}</td>
+                                                            <td>{{$usuario->name}}</td>
+                                                            <td>{{$usuario->email}}</td>
+                                                            <td>{{$usuario->created_at}}</td>
                                                             <td>
                                                                 <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
                                                                 <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>

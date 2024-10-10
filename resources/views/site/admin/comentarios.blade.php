@@ -15,7 +15,7 @@
                                                 <tr>
                                                     <th>Code</th>
                                                     <th>Comentario</th>
-                                                    <th>Code Anime</th>
+                                                    <th>Code Episodio</th>
                                                     <th>Data</th>
                                                     <th>Ação</th>
                                                 </tr>
@@ -24,7 +24,7 @@
                                                 <tr>
                                                     <th>Code</th>
                                                     <th>Comentario</th>
-                                                    <th>Code Anime</th>
+                                                    <th>Code Episodio</th>
                                                     <th>Data</th>
                                                     <th>Ação</th>
                                                 </tr>
@@ -33,10 +33,10 @@
                                                  @if(isset($comentarios) && $comentarios->count() > 0)
                                                     @foreach ($comentarios as $comentario)                                           
                                                         <tr>
-                                                            <td>{{$comentario['cod_comentario']}}</td>
-                                                            <td>{{$comentario['comentario']}}</td>
-                                                            <td>{{$comentario['episodio_cod_episodio']}}</td>
-                                                            <td>{{$comentario['datatempo_criacao']}}</td>
+                                                            <td>{{$comentario->cod_comentario}}</td>
+                                                            <td>{{$comentario->comentario}}</td>
+                                                            <td>{{$comentario->episodio_cod_episodio}}</td>
+                                                            <td>{{$comentario->datatempo_criacao}}</td>
                                                             <td>
                                                                 <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
                                                                 <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>

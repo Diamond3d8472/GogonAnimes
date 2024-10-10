@@ -35,7 +35,7 @@ class LoginController extends Controller
     public function logout(){
         if(Auth::check()){
             Auth::logout();
-            return redirect()->route('site.login');
+            return redirect()->route('site.login')->with('success', 'Deslogado do sistema.');
         }
         return redirect()->route('site.index');
         

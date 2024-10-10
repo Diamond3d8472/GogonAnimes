@@ -32,10 +32,10 @@
                                             <tbody>
                                                 @if(isset($admins) && $admins->count() > 0)
                                                     @foreach ($admins as $admin)
-                                                        @if($admin['tipo_de_acesso'] == 1)                                
+                                                        @if($admin->tipo_de_acesso == 1)                                
                                                         <tr>
-                                                            <td>{{$admin['cod_user']}}</td>
-                                                            <td>{{$admin['username']}}</td>
+                                                            <td>{{$admin->cod_user}}</td>
+                                                            <td>{{$admin->name}}</td>
                                                             <td>
                                                                 <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                                             </td>

@@ -1,0 +1,12 @@
+Implementaçoes da versao 1.0.2
+
+--Carrousel automatico--
+
+--Adicionado sucesso na tela de login quando usuario desloga do site --
+--Adicionado sucesso quando adicionado anime aos favoritos -- 
+--Adicionado sucesso quando removido animes dos favoritos -- 
+
+--Adicionado erro quando anime nao for possivel adionar nos favoritos -- 
+--Adicionado erro quando anime nao for possivel remover dos favoritos --
+
+--Adicionado botao para remover comentarios --
